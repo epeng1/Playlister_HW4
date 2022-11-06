@@ -38,7 +38,7 @@ const HomeScreen = () => {
             </List>;
     }
     return (
-        <div id="playlist-selector">
+        <div id="playlist-selector" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
             <div id="list-selector-heading">
             <Fab 
                 color="primary" 
