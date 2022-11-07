@@ -29,6 +29,9 @@ export const loginUser = (email, password) => {
         email : email,
         password : password
     })
+    .catch(function(error) {
+        return error.response.data;
+    })
 }
 export const logoutUser = () => api.get(`/logout/`)
 export const registerUser = (firstName, lastName, email, password, passwordVerify) => {
@@ -38,6 +41,9 @@ export const registerUser = (firstName, lastName, email, password, passwordVerif
         email : email,
         password : password,
         passwordVerify : passwordVerify
+    })
+    .catch(function(error) {
+        return error.response.data;
     })
 }
 const apis = {

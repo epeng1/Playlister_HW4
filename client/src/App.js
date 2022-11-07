@@ -7,6 +7,7 @@ import {
     AppBanner,
     HomeWrapper,
     LoginScreen,
+    MUIAccountErrModal,
     RegisterScreen,
     Statusbar,
     WorkspaceScreen
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path="/register/" exact component={RegisterScreen} />
                         <Route path="/playlist/:id" exact component={WorkspaceScreen} />
                     </Switch>
+                    <MUIAccountErrModal />
                     <Statusbar />
                 </GlobalStoreContextProvider>
             </AuthContextProvider>
