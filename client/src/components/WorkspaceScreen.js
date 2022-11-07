@@ -6,6 +6,8 @@ import MUIRemoveSongModal from './MUIRemoveSongModal'
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { GlobalStoreContext } from '../store/index.js'
+import Modal from '@mui/material/Modal'
+import Alert from '@mui/material/Alert'
 /*
     This React component lets us edit a loaded list, which only
     happens when we are on the proper route.
@@ -23,8 +25,18 @@ function WorkspaceScreen() {
     else if (store.isRemoveSongModalOpen()) {
         modalJSX = <MUIRemoveSongModal />;
     }
-    return (
-        <Box>
+    let workspace = null
+    if (store.currentList == null) {
+        workspace = <Modal
+            open={true}
+        >
+            <Alert severity="error" onClose={() => {store.history.push("/")}}>
+                Error: Playlist URL accessed directly
+            </Alert>
+        </Modal>
+    }
+    else {
+        workspace = <Box>
         <List 
             id="playlist-cards" 
             sx={{ width: '100%', bgcolor: 'background.paper' }}
@@ -39,10 +51,13 @@ function WorkspaceScreen() {
                     />
                 ))  
             }
-         </List>            
-         { modalJSX }
-         </Box>
-    )
+        </List>            
+        { modalJSX }
+        </Box>
+    }
+    return (
+        workspace
+    );
 }
 
 export default WorkspaceScreen;

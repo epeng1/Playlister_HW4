@@ -110,7 +110,7 @@ function AuthContextProvider(props) {
             // history.push("/login");
         }
         else {
-            auth.accountError(response);
+            auth.accountError(response.errorMessage);
         }
     }
 
@@ -127,7 +127,7 @@ function AuthContextProvider(props) {
         }
         else {
             console.log("ERROR RESPONSE: " + JSON.stringify(response))
-            auth.accountError(response);
+            auth.accountError(response.errorMessage);
         }
     }
 
@@ -156,7 +156,7 @@ function AuthContextProvider(props) {
         authReducer({
             type: AuthActionType.ACCOUNT_ERROR,
             payload: { 
-                error: errorMessage.errorMessage
+                error: errorMessage
             }
         })
     }
